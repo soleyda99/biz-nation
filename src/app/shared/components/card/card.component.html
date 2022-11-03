@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row">
+    <div
+      *ngFor="let character of data | async"
+      class="col-lg-3 col-md-4 col-sm-6"
+    >
+      <div class="card mb-3">
+        <img
+          src="{{ character.thumbnail.path }}.{{
+            character.thumbnail.extension
+          }}"
+          class="card-img-top cursor"
+          height="300"
+          (click)="openWindow(character)"
+        />
+        <div class="card-body container">
+          <div class="row">
+            <div class="col-8">
+              <h5 class="card-title">{{ character.name }}</h5>
+              <p class="card-text">
+                {{ character.description }}
+              </p>
+              <p class="card-text">
+                <small class="text-muted"
+                  >Modificado:
+                  {{ character.modified | date: "dd/MM/yyyy" }}</small
+                >
+              </p>
+              <a
+                class="btn btn-danger"
+                *ngIf="ruta === '/characters/list'"
+                (click)="edit(character)"
+                >Editar</a
+              >
+            </div>
+
+            <div class="col text-end">
+              <img
+                src="{{ character.src }}"
+                class="cursor"
+                (click)="isOnHeart(character)"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-edit (saved)="editSave($event)"></app-edit>

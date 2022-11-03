@@ -1,0 +1,14 @@
+img {
+  max-width: 75px;
+  min-width: 75px;
+}
+
+@media (max-width: 992px) {
+  .margin-b {
+    margin-bottom: 20px;
+  }
+}
+
+.is-active {
+  color: #dc3545 !important;
+}
